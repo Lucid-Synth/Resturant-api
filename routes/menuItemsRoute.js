@@ -1,12 +1,12 @@
 import express from 'express'
-import MenuItems from '../models/Menu.js'
+import MenuItem from '../models/Menu.js'
 
 const router = express.Router()
 
-// GET all menu items
+
 router.get('/', async (req, res) => {
   try {
-    const items = await MenuItems.find()
+    const items = await MenuItem.find()
     console.log('Items fetched')
     res.status(200).json(items)
   } catch (err) {
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// POST new menu item
+
 router.post('/', async (req, res) => {
   try {
     const item = req.body
