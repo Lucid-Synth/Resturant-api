@@ -1,42 +1,22 @@
 import express from 'express'
 import db from './db.js'
-import Person from './Person.js'
+import personRouter from './routes/personRouter.js'
+import menuRouter from './routes/menuItemsRoute.js'
 import bodyParser from 'body-parser'
+import dotenv from 'dotenv';
 
 const app = express()
+dotenv.config()
 app.use(bodyParser.json())
+const port = process.env.PORT || 3000;
 
-
-app.post('/person', async (req,res) => {
-  try {
-    const data = req.body
-    const newPerson = new Person(data)
-
-    const response = await newPerson.save()
-    console.log('data saved')
-    res.status(200).json(response)
-  } catch (err) {
-    console.log(err)
-    res.status(500).json({error:"Internal server error"})
-  }
+app.get('/', (req, res) => {
+  res.send('Welcome to our Resturant ... How can I help you? We have a list of menus!')
 })
 
-app.get('/person', async (req,res) => {
-  try {
-    const data = await Person.find()
-    console.log('Data fetched')
-    res.status(200).json(data)
-  } catch (err) {
-    console.log(err)
-    res.status(500).json({error:"Internal server error"})
-  }
-})
+app.use('/person', personRouter)
+app.use('/menu', menuRouter)
 
-app.get('/', (req,res) => {
-  res.send('Welcome to my hotel... How can i help you?, We have list of menus!')
-})
-
-
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Server is running on 3000")
 })

@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
-const mongoURL = 'mongodb://localhost:27017/hotels'
+import dotenv from 'dotenv';
+const mongoURL = process.env.MONGO_URL
+
+dotenv.config()
 
 mongoose.connect(mongoURL)
 
