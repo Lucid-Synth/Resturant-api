@@ -1,37 +1,58 @@
-# 🍽️ Restaurant API
+# 📚 Books REST API
 
-This is a simple RESTful API for a restaurant system, built using **Node.js**, **Express**, and **MongoDB Atlas**. It allows you to manage menu items and people (users/staff/customers).
+A simple RESTful API built with **Node.js**, **Express**, and **MongoDB** to manage a library of books.
 
-## 🌐 Live API
-
-Deployed on Render:  
-👉 [https://resturant-api-qeng.onrender.com/menu](https://resturant-api-qeng.onrender.com/menu)
-
----
-
-## 📁 Features
-
-- Get all menu items (`GET /menu`)
-- Add new menu items (`POST /menu`)
-- Manage people (`/person` route)
-- Connects to MongoDB Atlas using Mongoose
-- CORS and Body-parser enabled
+## 🚀 Features
+- Add new books
+- Get all books
+- Get a single book by ID
+- Update book details
+- Delete a book
+- Seed initial book data
 
 ---
 
-## 🚀 Tech Stack
+## 📂 Project Structure
+📦 books-api
+├── 📂 models
+│ └── Book.js # Mongoose schema for books
+├── 📂 routes
+│ └── BookRoutes.js # All book-related API routes
+├── db.js # MongoDB connection setup
+├── server.js # Express app entry point
+├── package.json
+└── README.md
 
-- Node.js
-- Express.js
-- MongoDB Atlas
-- Mongoose ODM
-- dotenv
+yaml
+Copy
+Edit
 
 ---
 
-## 🛠️ Setup Instructions
+## 🛠 Installation & Setup
 
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/yourusername/restaurant-api.git
-   cd restaurant-api
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/books-api.git
+cd books-api
+Install dependencies
+
+bash
+Copy
+Edit
+npm install
+Create .env file
+
+ini
+Copy
+Edit
+PORT=3000
+MONGO_URI=your_mongodb_connection_string
+Run the server
+
+bash
+Copy
+Edit
+npm start
+Server will run at: http://localhost:3000
+
