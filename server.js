@@ -1,22 +1,26 @@
-import express from 'express'
-import db from './db.js'
-import personRouter from './routes/personRouter.js'
-import menuRouter from './routes/menuItemsRoute.js'
-import bodyParser from 'body-parser'
+import express from 'express';
+import db from './db.js';
+import bookRouter from './routes/BookRoutes.js';
+import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
-const app = express()
-dotenv.config()
-app.use(bodyParser.json())
+dotenv.config();
+
+const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware
+app.use(bodyParser.json());
+
+// Home route
 app.get('/', (req, res) => {
-  res.send('Welcome to our Resturant ... How can I help you? We have a list of menus!')
-})
+  res.send('📚 Welcome to our Library API! How can I help you?');
+});
 
-app.use('/person', personRouter)
-app.use('/menu', menuRouter)
+// Book routes
+app.use('/books', bookRouter);
 
+// Start server
 app.listen(port, () => {
-  console.log("Server is running on 3000")
-})
+  console.log(`✅ Server is running on port ${port}`);
+});
